@@ -51,7 +51,7 @@ MAKE_VARS += \
 	LNKFLAGS="$(TARGET_LDFLAGS) -lpcrecpp"
 
 TARGET_CFLAGS += \
-	-I$(STAGING_DIR)/opt/include/ncursesw
+	-I$(STAGING_DIR)/opt/include/ncursesw -Wno-long-long
 
 define Package/golded-nsf/install
 	$(INSTALL_DIR) $(1)/opt/sbin

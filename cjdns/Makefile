@@ -26,7 +26,7 @@ define Package/cjdns
 	SECTION:=net
 	CATEGORY:=Network
 	SUBMENU:=Routing and Redirection
-	DEPENDS:=+librt
+	DEPENDS:=+libpthread +librt
 	TITLE:=Experimental self configuring routing protocol
 	URL:=$(PKG_SOURCE_URL)
 	MAINTAINER:=Entware team, entware.wl500g.info
@@ -36,6 +36,8 @@ define Package/cjdns/description
  Cjdns implements an encrypted IPv6 network using public key cryptography
  for address allocation and a distributed hash table for routing.
 endef
+
+TARGET_LDFLAGS += -lpthread
 
 define Build/Compile
 	(cd $(PKG_BUILD_DIR) && \

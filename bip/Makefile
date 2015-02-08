@@ -39,6 +39,8 @@ define Package/bip/conffiles
 /opt/etc/bip.conf
 endef
 
+TARGET_CFLAGS += -Wno-error
+
 define Package/bip/install
 	$(INSTALL_DIR) $(1)/opt/bin
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/opt/bin/{bip,bipmkpw} $(1)/opt/bin

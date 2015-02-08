@@ -49,7 +49,7 @@ MAKE_VARS += \
 	LNKFLAGS="$(TARGET_LDFLAGS)"
 
 TARGET_CFLAGS += \
-	-I$(STAGING_DIR)/opt/include/ncursesw
+	-I$(STAGING_DIR)/opt/include/ncursesw -Wno-long-long
 
 define Package/golded-plus/install
 	$(INSTALL_DIR) $(1)/opt/sbin

@@ -35,6 +35,8 @@ define Package/vsftpd-ext/conffiles
 /opt/etc/vsftpd/vsftpd.conf
 endef
 
+TARGET_CFLAGS += -Wno-error
+
 define Package/vsftpd-ext/install
 	$(INSTALL_DIR) $(1)/opt/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/vsftpd $(1)/opt/sbin/

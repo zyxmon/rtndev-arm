@@ -1,0 +1,47 @@
+--- a/src/qparser.c
++++ b/src/qparser.c
+@@ -54,8 +54,7 @@
+ 
+ static t_qp_initflags qp_globalflags;
+ 
+-#ifdef QP_BUILD_STRNDUP
+-char *strndup(const char *s, size_t n)
++static char *st__strndup(const char *s, size_t n)
+ {
+ 	char *newstr = NULL;
+ 
+@@ -66,7 +65,6 @@
+ 
+ 	return (newstr);
+ }
+-#endif
+ 
+ t_qp_datatype return_datatype (const char *src);
+ char *remove_quotes (char *src, t_qp_datatype datatype);
+@@ -316,7 +314,7 @@
+ 			conf_handler->requested_conf [line_number] = QP_TRUE;
+ 
+ 			data_len = linelen - (conf_key_len + 1);
+-			new_str = strndup (readpos + conf_key_len + 1, data_len);
++			new_str = st__strndup (readpos + conf_key_len + 1, data_len);
+ 
+ 			/* remove trailing \n if present */
+ 			if (*(new_str + (data_len - 1)) == '\n')
+@@ -616,7 +614,7 @@
+ 		position--;
+ 	}
+ 
+-	return ((char *) strndup (src, element_size));
++	return ((char *) st__strndup (src, element_size));
+ }
+ 
+ /* 
+@@ -909,7 +907,7 @@
+ 		linelen = get_line_len (readpos);
+ 		if (conf_handler->requested_conf [counter] == QP_FALSE) {
+ 
+-			new_str = (char *) strndup (readpos, linelen);
++			new_str = (char *) st__strndup (readpos, linelen);
+ 			if (*(new_str + (linelen - 1)) == '\n')
+ 				*(new_str + (linelen - 1)) = '\0';
+ 

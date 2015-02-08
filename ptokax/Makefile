@@ -34,6 +34,8 @@ define Package/ptokax/description
  for Neo-Modus Direct Connect Peer-To-Peer sharing network.
 endef
 
+TARGET_LDFLAGS += -ldl
+
 define Build/Compile
 	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/skein $(MAKE_FLAGS)
 	$(MAKE_VARS) $(MAKE) -C $(PKG_BUILD_DIR)/tinyxml $(MAKE_FLAGS)
