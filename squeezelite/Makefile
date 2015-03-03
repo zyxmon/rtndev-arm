@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=squeezelite
-PKG_VERSION:=1.6.5
-PKG_REV:=1bcddea0adb1a4dc6a96b46b30571867aa529b9a
+PKG_VERSION:=1.7.1
+PKG_REV:=1860ed3d422a668bebd4b1c5a4b428bd0ef9eabc
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
@@ -18,12 +18,14 @@ PKG_SOURCE_URL:=https://code.google.com/p/squeezelite/
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=$(PKG_REV)
 
+PKG_BUILD_DEPENDS:=+libvorbis +libflac +libmad +faad2 +libmpg123 
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/squeezelite
 	SECTION:=sound
 	CATEGORY:=Sound
-	DEPENDS:=+alsa-lib +libmpg123
+	DEPENDS:=+alsa-lib
 	TITLE:=headless squeezebox emulator
 	URL:=https://code.google.com/p/squeezelite/
 	MAINTAINER:=Entware team, entware.wl500g.info
