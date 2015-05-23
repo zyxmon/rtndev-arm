@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=daemonize
-PKG_VERSION:=1.7.5
-PKG_REV:=a4ac64a243af91dc434b7a3915f43482d528a2b1
+PKG_VERSION:=1.7.6
+PKG_REV:=4af111e065596819ec52a7e3486a0d5ab257094e
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_URL:=git://github.com/bmc/daemonize.git
+PKG_SOURCE_URL:=https://github.com/bmc/daemonize
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=$(PKG_REV)
 
