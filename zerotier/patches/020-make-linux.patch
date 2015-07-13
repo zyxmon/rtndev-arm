@@ -43,8 +43,8 @@
 -	CFLAGS=-Wall -O3 -fPIE -fvisibility=hidden -fstack-protector -pthread $(INCLUDES) -DNDEBUG $(DEFS)
 -	LDFLAGS=-pie -Wl,-z,relro,-z,now
 -	STRIP=strip --strip-all
-+	CFLAGS=-Wall -fPIE -fvisibility=hidden -pthread $(INCLUDES) -DNDEBUG $(DEFS)
-+	LDFLAGS=-pie -Wl,-z,relro,-z,now -lpthread
++	CFLAGS+=-Wall -fPIE -fvisibility=hidden -pthread $(INCLUDES) -DNDEBUG $(DEFS)
++	LDFLAGS+=-pie -Wl,-z,relro,-z,now -lpthread
 +	STRIP?=strip --strip-all
  endif
  
