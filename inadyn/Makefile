@@ -8,15 +8,17 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=inadyn
-PKG_VERSION:=1.99.14-20150428
+PKG_VERSION:=1.99.14-20150722
 PKG_RELEASE:=1
 
-PKG_REV:=193395a624af3746abff99ca242b14f33095f048
+PKG_REV:=802ef1b63732622ebbc07bddafa54a9b09377a5a
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/troglobit/inadyn
 PKG_SOURCE_VERSION:=$(PKG_REV)
+
+PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -24,7 +26,7 @@ define Package/inadyn
 	SECTION:=net
 	CATEGORY:=Network
 	SUBMENU:=IP Addresses and Names
-	DEPENDS:=+libgnutls-openssl
+	DEPENDS:=+libopenssl
 	TITLE:=a simple and small DDNS client
 	URL:=$(PKG_SOURCE_URL)
 	MAINTAINER:=Entware team, entware.wl500g.info
@@ -37,7 +39,11 @@ define Package/inadyn/description
  Andrey Tikhomirov.
 endef
 
+CONFIGURE_ARGS += --enable-openssl
+
 TARGET_CFLAGS += -Iinclude
+
+MAKE_VARS += _PATH_VARRUN="/opt/var/run"
 
 define Package/inadyn/install
 	$(INSTALL_DIR) $(1)/opt/bin

@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=zerotier
-PKG_VERSION:=1.0.3-dev
-PKG_REV:=b3b9af0dd85ac755d41122cf2d0428d7f85e4cce
+PKG_VERSION:=1.0.3
+PKG_REV:=bd7e4ab6955f838c3119fe1262901875345d8d43
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
@@ -24,7 +24,7 @@ define Package/zerotier
 	SECTION:=net
 	CATEGORY:=Network
 	SUBMENU:=VPN
-	DEPENDS:=+libstdcpp +libpthread
+	DEPENDS:=+libstdcpp +libpthread +libsqlite3
 	TITLE:=Ethernet virtualization engine
 	URL:=https://www.zerotier.com/
 	MAINTAINER:=Entware team, entware.wl500g.info
@@ -34,6 +34,7 @@ define Package/zerotier/description
  Create flat virtual Ethernet networks of almost unlimited size.
 endef
 
+MAKE_VARS += ZT_ENABLE_NETWORK_CONTROLLER=1
 
 define Package/zerotier/install
 	$(INSTALL_DIR) $(1)/opt/bin
