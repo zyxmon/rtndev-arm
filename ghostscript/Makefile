@@ -38,6 +38,8 @@ define Package/ghostscript/description
  Ghostscript is an interpreter for the PostScript language and for PDF.
 endef
 
+TARGET_CFLAGS += -I$(STAGING_DIR)/opt/include/freetype2
+
 HOST_CONFIGURE_ARGS += \
 	--without-x \
 	--without-jbig2dec \
